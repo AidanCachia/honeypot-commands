@@ -119,7 +119,25 @@ The following command was used to check the authentication class setting inside 
 grep -n "auth_class" /home/cowrie/cowrie/etc/cowrie.cfg
 ```
 
-## 13. Checking Cowrie Log Files
+## 13. Checking Cowrie Port and Authentication Settings
+The following command was used to check whether Cowrie was listening on port `2222`:
+```bash
+ss -tlnp | grep 2222
+```
+The following command was also used with sudo privileges to check listening services on port `2222`:
+```bash
+sudo ss -tlnp | grep 2222
+```
+The following command was used to check the Cowrie authentication class setting in the configuration file:
+```bash
+grep -n "auth_class" /home/cowrie/cowrie/etc/cowrie.cfg
+```
+The following command was used to check the custom authentication class inside Cowrie's authentication file:
+```bash
+grep -R -n "class AuthAlwaysSucceed" /home/cowrie/cowrie/src/cowrie/core/auth.py
+```
+
+## 14. Checking Cowrie Log Files
 The following commands were used to inspect Cowrie log locations:
 ```bash
 ls -lh /var/log/cowrie
@@ -137,7 +155,7 @@ sudo tail -n 50 /home/cowrie/cowrie/var/log/cowrie/cowrie.json.2026-04-15
 sudo tail -n 50 /home/cowrie/cowrie/var/log/cowrie/cowrie.json.2026-04-25
 ```
 
-## 14. Locating Cowrie Files
+## 15. Locating Cowrie Files
 The following commands were used to locate Cowrie-related files and directories:
 ```bash
 find /home -type d -name "cowrie" 2>/dev/null
