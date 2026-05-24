@@ -42,18 +42,6 @@ The following commands were used to run the honeypot in the background and save 
 nohup python3 ssh_honeypot.py > honeypot_run.log 2>&1 &
 ```
 
-```bash
-nohup python3 ssh_honeypot.py > honeypot_run_attacker3.log 2>&1 &
-```
-
-```bash
-nohup python3 ssh_honeypot.py > honeypot_run_attacker4.log 2>&1 &
-```
-
-```bash
-nohup python3 ssh_honeypot.py > honeypot_run_attacker5.log 2>&1 &
-```
-
 ## 5. Checking Whether the LLM Honeypot Was Running
 
 The following commands were used to check whether the LLM honeypot process was running:
