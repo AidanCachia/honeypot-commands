@@ -36,7 +36,7 @@ The following command was used to run the LLM honeypot script directly:
 python3 ssh_honeypot.py
 ```
 
-The following commands were used to run the honeypot in the background and save output into run log files:
+The following command was used to run the honeypot in the background and save output into a run log file:
 
 ```bash
 nohup python3 ssh_honeypot.py > honeypot_run.log 2>&1 &
@@ -106,12 +106,8 @@ tail -n 50 logs/20260423_133921.jsonl
 
 ## 10. Checking Run Logs
 
-The following commands were used to inspect run log files created when the honeypot was launched in the background:
+The following command was used to inspect the run log file created when the honeypot was launched in the background:
 
 ```bash
 tail -10 honeypot_run.log
-```
-
-```bash
-tail -n 50 honeypot_run_attacker5.log
 ```
