@@ -1,6 +1,6 @@
 # LLM-Based Honeypot Commands
 
-This file documents LLM-based SSH honeypot commands that were found in the LLM honeypot VM command history. These commands relate to checking the project folder, running the Python honeypot, checking port `2222`, checking Ollama, and inspecting honeypot logs.
+This file documents the main commands used to run and check the LLM-based SSH honeypot. These commands were found in the LLM honeypot VM command history.
 
 The purpose of this file is to document verified commands used during the project. It does not claim to be a full fresh installation guide from scratch.
 
@@ -22,7 +22,7 @@ ls
 
 ## 3. Checking LLM Honeypot Script Configuration
 
-The following command was used to check important configuration values inside `ssh_honeypot.py`, including the host, port, authentication logic, Ollama-related references, and Paramiko usage:
+The following command was used to check important configuration values inside `ssh_honeypot.py`, including host, port, authentication logic, Ollama-related references, and Paramiko usage:
 
 ```bash
 grep -nEi "VALID_USERS|username|password|PORT|HOST|MODEL|ollama|generate|chat|paramiko" ~/llmhoneypot_v2/ssh_honeypot.py
@@ -82,32 +82,6 @@ The following command was used to check whether the Ollama service was running:
 systemctl status ollama --no-pager
 ```
 
-## 9. Checking LLM Honeypot Logs
+## 9. Purpose of These Commands
 
-The following commands were used to inspect the LLM honeypot log file:
-
-```bash
-tail -f ssh_honeypot.log
-```
-
-```bash
-tail -n 50 ssh_honeypot.log
-```
-
-```bash
-less ssh_honeypot.log
-```
-
-The following command was used to inspect a JSONL log file from the `logs` folder:
-
-```bash
-tail -n 50 logs/20260423_133921.jsonl
-```
-
-## 10. Checking Run Logs
-
-The following command was used to inspect the run log file created when the honeypot was launched in the background:
-
-```bash
-tail -10 honeypot_run.log
-```
+These commands were used to access, run, verify, and stop the LLM-based SSH honeypot. Log inspection, dataset files, and resource monitoring are documented separately to avoid repetition.
