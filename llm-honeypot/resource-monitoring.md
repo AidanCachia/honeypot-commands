@@ -62,9 +62,9 @@ The following command was used to extract the lowest available RAM value from th
 echo "LOWEST_AVAILABLE_RAM_MB=$(grep -o 'AVAIL_MB=[0-9]*' llm_usage_attacker5.log | cut -d= -f2 | sort -n | head -1)"
 ```
 
-## 7. Stopping the Resource Monitoring Log
+## 7. Stopping the Resource Monitoring Process
 
-The following command was used to stop the running LLM resource monitoring process:
+The following command was used to stop the background resource monitoring process that was writing to `llm_usage_attacker5.log`:
 
 ```bash
 pkill -f llm_usage_attacker5.log
