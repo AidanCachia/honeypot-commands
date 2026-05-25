@@ -75,7 +75,36 @@ The file also included protected files such as:
 /etc/shadow
 ```
 
-## 5. Attack Patterns Dataset
+## 5. Simulated SSH Files
+
+The LLM honeypot simulated SSH-related files through the `filesystem.json` dataset file. This included a fake `.ssh` directory and an `authorized_keys` entry.
+
+The following command was used to confirm the simulated SSH entries inside `filesystem.json`:
+
+```bash
+grep -n ".ssh" dataset/filesystem.json
+```
+
+The confirmed simulated SSH entries included:
+
+```text
+/home/llmhoneypot/.ssh
+/home/llmhoneypot/.ssh/authorized_keys
+```
+
+The actual SSH host key used by the Paramiko-based SSH server was stored in the LLM honeypot project folder:
+
+```text
+/home/llmhoneypot/llmhoneypot_v2/host_rsa.key
+```
+
+The following command was used to confirm the host key file:
+
+```bash
+ls -lh host_rsa.key
+```
+
+## 6. Attack Patterns Dataset
 
 The `attack_patterns.json` file stored groups of attacker-style commands used to classify or recognise common attacker behaviour.
 
@@ -87,7 +116,7 @@ persistence_attempts
 download_tools
 ```
 
-## 6. Corrections Dataset
+## 7. Corrections Dataset
 
 The following command was used to view the beginning of the corrections dataset:
 
@@ -105,7 +134,7 @@ cat /etc/os-release
 hostnamectl
 ```
 
-## 7. Editing Dataset Files
+## 8. Editing Dataset Files
 
 The following command was used to edit the simulated filesystem dataset:
 
@@ -119,7 +148,7 @@ The following command was used to edit the attack patterns dataset:
 nano ~/llmhoneypot_v2/dataset/attack_patterns.json
 ```
 
-## 8. Recreating the Simulated Filesystem Dataset
+## 9. Recreating the Simulated Filesystem Dataset
 
 The following command was used to overwrite or recreate the simulated filesystem dataset using terminal input:
 
@@ -127,6 +156,6 @@ The following command was used to overwrite or recreate the simulated filesystem
 cat > ~/llmhoneypot_v2/dataset/filesystem.json <<'EOF'
 ```
 
-## 9. Purpose of Dataset Files
+## 10. Purpose of Dataset Files
 
-These dataset files supported the LLM-based honeypot by providing structured information used to simulate a Linux environment and improve response consistency. The files helped define fake directories, fake file contents, protected files, attacker command patterns, and corrected responses for selected Linux commands.
+These dataset files supported the LLM-based honeypot by providing structured information used to simulate a Linux environment and improve response consistency. The files helped define fake directories, fake file contents, protected files, attacker command patterns, corrected responses for selected Linux commands, and simulated SSH-related files.
