@@ -18,7 +18,7 @@ The working directory was:
 
 ## 2. Recording LLM Resource Usage
 
-The following command was used to record CPU usage, RAM usage, and available memory into an LLM usage log file:
+The following command was used to record CPU usage, RAM usage, and available memory into a resource usage log file:
 
 ```bash
 nohup bash -c 'while true; do echo "$(date "+%F %T") CPU_USED=$(top -bn1 | awk "/Cpu/ {printf \"%.2f\", 100-\$8}")% RAM_USED=$(free | awk "/Mem:/ {printf \"%.2f\", \$3/\$2*100}")% AVAIL_MB=$(free -m | awk "/Mem:/ {print \$7}")"; sleep 1; done' >> llm_usage_attacker5.log 2>&1 &
