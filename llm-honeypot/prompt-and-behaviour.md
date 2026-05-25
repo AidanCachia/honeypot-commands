@@ -1,6 +1,6 @@
 # LLM Honeypot Prompt and Behaviour Rules
 
-This file documents the commands used to inspect the prompt and behaviour rules used by the LLM-based honeypot. These rules controlled how the LLM was instructed to respond during simulated SSH terminal sessions.
+This file documents the prompt and behaviour rules used by the LLM-based honeypot. These rules were defined inside `honeypot.py` and controlled how the LLM responded during simulated SSH terminal sessions.
 
 ## 1. Locating the Prompt Function
 
@@ -8,12 +8,6 @@ The following command was used to locate the prompt-building function inside `ho
 
 ```bash
 grep -n "def build_prompt" honeypot.py
-```
-
-The prompt-building function was found in:
-
-```text
-honeypot.py
 ```
 
 ## 2. Inspecting Prompt and Behaviour References
@@ -29,74 +23,61 @@ grep -nEi "prompt|system|instruction|behave|act|linux|terminal|shell|honeypot|re
 The following command was used to inspect the section of `honeypot.py` where the LLM prompt and behaviour rules were defined:
 
 ```bash
-sed -n '147,190p' honeypot.py
+sed -n '147,200p' honeypot.py
 ```
 
 ## 4. Prompt Purpose
 
-The prompt was used to instruct the LLM to behave like a realistic Linux terminal during attacker interaction. It provided the LLM with system identity details, environment details, filesystem rules, and behaviour rules.
+The prompt was used to instruct the LLM to behave like a realistic Linux terminal during attacker interaction. It defined the simulated system identity, environment details, filesystem rules, behaviour rules, recent command history, and the command to execute.
 
-## 5. Confirmed System Identity Details
+## 5. Exact Prompt Rules
 
-The prompt included system identity values such as:
-
-```text
-hostname
-username
-home directory
-current directory
-```
-
-These values helped the LLM keep shell responses consistent during interaction.
-
-## 6. Confirmed Environment Details
-
-The prompt included simulated system environment details such as:
+The following rules were taken from the prompt section in `honeypot.py`:
 
 ```text
-Ubuntu 22.04.4 LTS
-Linux kernel 5.15.0-91-generic
-x86_64 architecture
-eth0 network interface
-IP address 10.10.70.10/24
-default gateway 10.10.70.1
-attacker IP 10.10.60.10
-timezone Europe/Malta
-current year 2026
+- Never mention AI, models, or honeypots.
+
+System identity:
+hostname: {HOSTNAME}
+username: {USER}
+home: {HOME}
+current directory: {cwd}
+
+System environment:
+- OS: Ubuntu 22.04.4 LTS
+- Kernel: 5.15.0-91-generic
+- Architecture: x86_64
+- Interface: eth0
+- IP address: 10.10.70.10/24
+- Default gateway: 10.10.70.1
+- Attacker IP: 10.10.60.10
+- Timezone: Europe/Malta
+- Current year: 2026
+
+Filesystem rules:
+- Standard Linux files such as /etc/passwd, /etc/group, /etc/hosts MUST exist.
+- Do NOT say core system files are missing.
+- User home directories exist under /home/.
+- The current user is {USER}.
+
+Behaviour rules:
+- Act like a normal bash shell.
+- If a command does not exist: bash: <cmd>: command not found
+- If a file does not exist: No such file or directory
+- If permission is denied: Permission denied
+- Prefer short, realistic Linux outputs.
+- Keep outputs consistent with previous responses.
+- NEVER invent different IP ranges such as 10.0.2.x, 10.0.3.x, or 192.168.x.x.
+- Always use the defined IP (10.10.70.10) and network (10.10.70.0/24).
+- Keep time, users, and system details consistent across commands.
+
+Recent command history:
+{hist3}
+
+Command to execute:
+{cmd}
 ```
 
-## 7. Filesystem Rules
-
-The prompt included filesystem rules to make the simulated environment behave more realistically.
-
-Examples of confirmed filesystem rules included:
-
-```text
-Standard Linux files such as /etc/passwd, /etc/group, and /etc/hosts must exist.
-Do not say core system files are missing.
-User home directories exist under /home/.
-The current user is defined by the prompt.
-```
-
-## 8. Behaviour Rules
-
-The prompt included behaviour rules that controlled how the LLM should respond to commands.
-
-Examples of confirmed behaviour rules included:
-
-```text
-Act like a normal bash shell.
-If a command does not exist, return: bash: <cmd>: command not found
-If a file does not exist, return: No such file or directory
-If permission is denied, return: Permission denied
-Prefer short, realistic Linux outputs.
-Keep outputs consistent with previous responses.
-Never invent different IP ranges.
-Always use the defined IP address and network.
-Keep time, users, and system details consistent across commands.
-Never mention AI, models, or honeypots.
-```
-
-## 9. Purpose of Prompt and Behaviour Rules
+## 6. Purpose of Prompt and Behaviour Rules
 
 These prompt and behaviour rules were used to make the LLM-based honeypot respond more like a real Linux SSH terminal. They helped improve realism, reduce inconsistent responses, and prevent the LLM from revealing that the environment was AI-generated or deceptive.
