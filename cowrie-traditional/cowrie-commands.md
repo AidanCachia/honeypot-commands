@@ -74,34 +74,6 @@ The following command was used to back up the modified Cowrie authentication fil
 cp -a /home/cowrie/cowrie/src/cowrie/core/auth.py /home/cowrie/auth.py.pre_update
 ```
 
-## 7. Saving Local Changes Before Updating
-
-The following Git commands were used to check and save local changes before applying updates:
-
-```bash
-git status --short
-```
-
-```bash
-git stash push -u -m 'pre-update stash'
-```
-
-```bash
-git stash list
-```
-
-```bash
-git stash show --stat stash@{0}
-```
-
-```bash
-git stash show --stat --include-untracked stash@{0}
-```
-
-```bash
-git diff stash@{0}^1 stash@{0} -- src/cowrie/core/auth.py
-```
-
 ## 8. Restoring Custom Cowrie Files
 
 The following commands were used to restore selected customised Cowrie files after updating:
