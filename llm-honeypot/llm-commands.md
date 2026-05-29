@@ -22,7 +22,7 @@ ls
 
 ## 3. Checking LLM Honeypot Script Configuration
 
-The following command was used to check important configuration values inside `ssh_honeypot.py`, including host, port, authentication logic, Ollama-related references, and Paramiko usage:
+The following command was used to check important references inside `ssh_honeypot.py`, including configured users, host/port values, Ollama-related calls, and Paramiko usage:
 
 ```bash
 grep -nEi "VALID_USERS|username|password|PORT|HOST|MODEL|ollama|generate|chat|paramiko" ~/llmhoneypot_v2/ssh_honeypot.py
@@ -84,4 +84,4 @@ systemctl status ollama --no-pager
 
 ## 9. Purpose of These Commands
 
-These commands were used to access, run, verify, and stop the LLM-based SSH honeypot. Log inspection, dataset files, and resource monitoring are documented separately to avoid repetition.
+These commands were used to access, run, verify, and stop the LLM-based SSH honeypot. Ollama status was also checked because the honeypot depended on the local LLM service for response generation. Log inspection, dataset files, and resource monitoring are documented separately to avoid repetition.
