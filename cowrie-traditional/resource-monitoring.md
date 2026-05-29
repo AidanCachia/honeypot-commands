@@ -18,7 +18,7 @@ The following command was used to enter the monitoring log folder:
 cd ~/monitor_logs
 ```
 
-## 3. Recording VMStat Data
+## 3. Recording CPU and Memory Usage Data
 
 The following command was used to record VMStat output into a Cowrie monitoring log file:
 
@@ -26,7 +26,7 @@ The following command was used to record VMStat output into a Cowrie monitoring 
 vmstat 1 > cowrie_vmstat.log
 ```
 
-This command records VMStat output every second and saves it into `cowrie_vmstat.log`. The recording was stopped manually using `Ctrl + C` after the test session was completed.
+This command records CPU and memory-related VMStat output every second and saves it into `cowrie_vmstat.log`. The recording was stopped manually using `Ctrl + C` after the test session was completed.
 
 ## 4. Checking the Monitoring Folder
 
