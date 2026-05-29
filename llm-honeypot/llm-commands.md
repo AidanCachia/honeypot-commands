@@ -1,7 +1,5 @@
 # LLM-Based Honeypot Commands
 
-This file documents the main commands used to run and check the LLM-based SSH honeypot. These commands were found in the LLM honeypot VM command history.
-
 The purpose of this file is to document verified commands used during the project. It does not claim to be a full fresh installation guide from scratch.
 
 ## 1. Accessing the LLM Honeypot Folder
