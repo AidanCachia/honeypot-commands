@@ -1,7 +1,5 @@
 # Cowrie Traditional Honeypot Commands
 
-This file documents Cowrie-related commands that were found in the Cowrie VM command history. These commands relate to configuring, running, testing, checking, and customising the traditional Cowrie SSH honeypot.
-
 The purpose of this file is to document verified commands used during the project. It does not claim to be a full fresh installation guide from scratch.
 
 ## 1. Accessing the Cowrie User
