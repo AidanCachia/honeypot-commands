@@ -1,6 +1,6 @@
 # LLM Honeypot Dataset Files
 
-This file documents the dataset-related commands used for the LLM-based honeypot. These commands were used to access, inspect, and edit the dataset files that supported the simulated Linux environment and command response behaviour.
+This file documents the dataset-related commands used for the LLM-based honeypot. These commands were used to access and inspect the dataset files that supported the simulated Linux environment and command response behaviour.
 
 ## 1. Accessing the Dataset Folder
 
@@ -82,7 +82,7 @@ The LLM honeypot simulated SSH-related files through the `filesystem.json` datas
 The following command was used to confirm the simulated SSH entries inside `filesystem.json`:
 
 ```bash
-grep -n ".ssh" dataset/filesystem.json
+grep -n ".ssh" ~/llmhoneypot_v2/dataset/filesystem.json
 ```
 
 The confirmed simulated SSH entries included:
@@ -101,19 +101,33 @@ The actual SSH host key used by the Paramiko-based SSH server was stored in the 
 The following command was used to confirm the host key file:
 
 ```bash
-ls -lh host_rsa.key
+ls -lh ~/llmhoneypot_v2/host_rsa.key
 ```
 
 ## 6. Attack Patterns Dataset
 
-The `attack_patterns.json` file stored groups of attacker-style commands used to classify or recognise common attacker behaviour.
+The `attack_patterns.json` file contained grouped attacker-style command patterns used by the LLM honeypot dataset. These categories helped represent common attacker behaviours such as filesystem discovery, network reconnaissance, privilege escalation, persistence attempts, and download tool usage.
 
 Examples of command categories included:
 
 ```text
 filesystem_discovery
+network_recon
+privilege_escalation
 persistence_attempts
 download_tools
+```
+
+Examples of commands stored within these categories included:
+
+```text
+cat /etc/passwd
+ifconfig
+ip route
+sudo -l
+wget
+curl
+nc
 ```
 
 ## 7. Corrections Dataset
@@ -134,28 +148,6 @@ cat /etc/os-release
 hostnamectl
 ```
 
-## 8. Editing Dataset Files
+## 8. Purpose of Dataset Files
 
-The following command was used to edit the simulated filesystem dataset:
-
-```bash
-nano ~/llmhoneypot_v2/dataset/filesystem.json
-```
-
-The following command was used to edit the attack patterns dataset:
-
-```bash
-nano ~/llmhoneypot_v2/dataset/attack_patterns.json
-```
-
-## 9. Recreating the Simulated Filesystem Dataset
-
-The following command was used to overwrite or recreate the simulated filesystem dataset using terminal input:
-
-```bash
-cat > ~/llmhoneypot_v2/dataset/filesystem.json <<'EOF'
-```
-
-## 10. Purpose of Dataset Files
-
-These dataset files supported the LLM-based honeypot by providing structured information used to simulate a Linux environment and improve response consistency. The files helped define fake directories, fake file contents, protected files, attacker command patterns, corrected responses for selected Linux commands, and simulated SSH-related files.
+These dataset files supported the LLM-based honeypot by providing structured information used to simulate parts of a Linux environment and improve command-response consistency. The files contained simulated directories, fake file contents, protected file entries, attacker-style command patterns, corrected responses for selected Linux commands, and simulated SSH-related entries.
