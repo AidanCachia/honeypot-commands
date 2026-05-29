@@ -40,15 +40,7 @@ systemctl status cowrie --no-pager
 ./cowrie-env/bin/cowrie status
 ```
 
-## 4. Restarting Cowrie
-
-The following command was used to restart the Cowrie service after changes:
-
-```bash
-sudo systemctl restart cowrie
-```
-
-## 5. Testing SSH Access to Cowrie
+## 4. Testing SSH Access to Cowrie
 
 The following command was used to test SSH access to the Cowrie honeypot on port `2222`:
 
@@ -56,7 +48,7 @@ The following command was used to test SSH access to the Cowrie honeypot on port
 ssh user1@10.10.70.10 -p 2222
 ```
 
-## 6. Checking GitHub Connectivity
+## 5. Checking GitHub Connectivity
 
 The following commands were used to confirm that the Cowrie VM could reach GitHub:
 
@@ -68,7 +60,7 @@ ping -c 4 github.com
 curl -I https://github.com
 ```
 
-## 7. Updating Cowrie from GitHub
+## 6. Updating Cowrie from GitHub
 
 The following commands were used when checking and updating the local Cowrie repository:
 
@@ -84,7 +76,7 @@ git log --oneline HEAD..origin/main
 git pull --ff-only
 ```
 
-## 8. Backing Up Cowrie Before Updating
+## 7. Backing Up Cowrie Before Updating
 
 The following command was used to create a backup of the Cowrie directory before updating:
 
@@ -98,7 +90,7 @@ The following command was used to back up the modified Cowrie authentication fil
 cp -a /home/cowrie/cowrie/src/cowrie/core/auth.py /home/cowrie/auth.py.pre_update
 ```
 
-## 9. Saving Local Changes Before Updating
+## 8. Saving Local Changes Before Updating
 
 The following Git commands were used to check and save local changes before applying updates:
 
@@ -126,7 +118,7 @@ git stash show --stat --include-untracked stash@{0}
 git diff stash@{0}^1 stash@{0} -- src/cowrie/core/auth.py
 ```
 
-## 10. Restoring Custom Cowrie Files
+## 9. Restoring Custom Cowrie Files
 
 The following commands were used to restore selected customised Cowrie files after updating:
 
@@ -146,7 +138,7 @@ git checkout stash@{0} -- var/lib/cowrie/fs.pickle
 git checkout stash@{0} -- honeyfs/home
 ```
 
-## 11. Editing Cowrie Authentication Behaviour
+## 10. Editing Cowrie Authentication Behaviour
 
 The following command was used to edit Cowrie's authentication file:
 
@@ -156,7 +148,7 @@ nano /home/cowrie/cowrie/src/cowrie/core/auth.py
 
 This file was edited as part of customising the honeypot authentication behaviour.
 
-## 12. Editing Cowrie Configuration
+## 11. Editing Cowrie Configuration
 
 The following command was used to edit the Cowrie configuration file:
 
@@ -164,7 +156,7 @@ The following command was used to edit the Cowrie configuration file:
 nano /home/cowrie/cowrie/etc/cowrie.cfg
 ```
 
-## 13. Checking Cowrie Port and Authentication Settings
+## 12. Checking Cowrie Port and Authentication Settings
 
 The following command was used to check whether Cowrie was listening on port `2222`:
 
@@ -190,7 +182,7 @@ The following command was used to check the custom authentication class inside C
 grep -R -n "class AuthAlwaysSucceed" /home/cowrie/cowrie/src/cowrie/core/auth.py
 ```
 
-## 14. Customising the Cowrie Fake Filesystem
+## 13. Customising the Cowrie Fake Filesystem
 
 The following commands were used to inspect Cowrie's fake filesystem structure:
 
@@ -234,7 +226,7 @@ mkdir -p honeyfs/home/user1/Documents
 printf "TODO:\n- Review nginx logs\n- Check backups\n- Rotate admin password\n" > honeyfs/home/user1/Documents/notes.txt
 ```
 
-## 15. Checking Cowrie Log Files
+## 14. Checking Cowrie Log Files
 
 The following commands were used to inspect Cowrie log locations:
 
@@ -258,7 +250,7 @@ sudo tail -n 50 /home/cowrie/cowrie/var/log/cowrie/cowrie.json.2026-04-15
 sudo tail -n 50 /home/cowrie/cowrie/var/log/cowrie/cowrie.json.2026-04-25
 ```
 
-## 16. Locating Cowrie Files
+## 15. Locating Cowrie Files
 
 The following commands were used to locate Cowrie-related files and directories:
 
