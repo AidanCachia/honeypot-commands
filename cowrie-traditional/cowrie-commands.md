@@ -60,23 +60,7 @@ ping -c 4 github.com
 curl -I https://github.com
 ```
 
-## 6. Updating Cowrie from GitHub
-
-The following commands were used when checking and updating the local Cowrie repository:
-
-```bash
-git fetch --all
-```
-
-```bash
-git log --oneline HEAD..origin/main
-```
-
-```bash
-git pull --ff-only
-```
-
-## 7. Backing Up Cowrie Before Updating
+## 6. Backing Up Cowrie Before Updating
 
 The following command was used to create a backup of the Cowrie directory before updating:
 
@@ -90,7 +74,7 @@ The following command was used to back up the modified Cowrie authentication fil
 cp -a /home/cowrie/cowrie/src/cowrie/core/auth.py /home/cowrie/auth.py.pre_update
 ```
 
-## 8. Saving Local Changes Before Updating
+## 7. Saving Local Changes Before Updating
 
 The following Git commands were used to check and save local changes before applying updates:
 
@@ -118,7 +102,7 @@ git stash show --stat --include-untracked stash@{0}
 git diff stash@{0}^1 stash@{0} -- src/cowrie/core/auth.py
 ```
 
-## 9. Restoring Custom Cowrie Files
+## 8. Restoring Custom Cowrie Files
 
 The following commands were used to restore selected customised Cowrie files after updating:
 
