@@ -1,6 +1,6 @@
 # Cowrie Resource Monitoring Commands
 
-This file documents the resource monitoring commands used for the traditional Cowrie honeypot. These commands were used to record VMStat output and calculate peak CPU usage, estimated peak RAM usage, and lowest free memory during local testing.
+This file documents the resource monitoring commands used for the traditional Cowrie honeypot. These commands were used to calculate peak CPU usage, estimated peak RAM usage, and lowest free memory during local testing.
 
 ## 1. Creating the Monitoring Folder
 
