@@ -14,16 +14,18 @@ sudo -iu cowrie
 
 ## 2. Starting Cowrie
 
-The following command was used to start Cowrie from the Cowrie directory using the Cowrie virtual environment:
+The following commands were used to start Cowrie from the dedicated Cowrie user account:
 
 ```bash
-sudo -iu cowrie bash -lc 'cd /home/cowrie/cowrie && source cowrie-env/bin/activate && bin/cowrie start'
+sudo -iu cowrie
+cd /home/cowrie/cowrie
+./cowrie-env/bin/cowrie start
 ```
 
-Cowrie was also started directly using:
+If Cowrie is already running, the command returns:
 
 ```bash
-./cowrie-env/bin/cowrie start
+cowrie is already running
 ```
 
 ## 3. Checking Cowrie Status
