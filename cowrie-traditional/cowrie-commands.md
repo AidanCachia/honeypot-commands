@@ -74,26 +74,6 @@ The following command was used to back up the modified Cowrie authentication fil
 cp -a /home/cowrie/cowrie/src/cowrie/core/auth.py /home/cowrie/auth.py.pre_update
 ```
 
-## 8. Restoring Custom Cowrie Files
-
-The following commands were used to restore selected customised Cowrie files after updating:
-
-```bash
-git checkout stash@{0} -- honeyfs
-```
-
-```bash
-git checkout stash@{0} -- var/lib/cowrie/cmdoutput.json
-```
-
-```bash
-git checkout stash@{0} -- var/lib/cowrie/fs.pickle
-```
-
-```bash
-git checkout stash@{0} -- honeyfs/home
-```
-
 ## 10. Editing Cowrie Authentication Behaviour
 
 The following command was used to edit Cowrie's authentication file:
