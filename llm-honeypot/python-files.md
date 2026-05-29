@@ -57,9 +57,9 @@ grep -nEi "import|ollama|ask_ollama|corrections|filesystem|attack_patterns|log_e
 
 ## 5. LLM Command Handling Script
 
-The `honeypot.py` file handled the LLM-based command response logic. It included references to Ollama response generation, corrected command outputs, simulated filesystem data, attack pattern data, and JSONL logging.
+The `honeypot.py` file handled the LLM-based command response logic. It included references to Ollama response generation, corrected command outputs, simulated filesystem data, attack pattern data, built-in command handling, and JSONL logging.
 
-The script included important logic such as:
+The script included references such as:
 
 ```text
 OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
@@ -68,11 +68,11 @@ load_filesystem()
 load_corrections()
 load_attack_patterns()
 build_prompt(...)
-buildin_output(...)
+builtin_output(...)
 log_event(...)
 command_output
 ```
 
 ## 6. Purpose of Python Files
 
-These Python files formed the main implementation of the current LLM-based honeypot. The SSH script handled incoming SSH connections, authentication handling, host key usage, and port binding. The main honeypot script supported LLM-generated command responses, correction handling, simulated filesystem behaviour, attack pattern handling, and structured logging.
+These Python files formed the main implementation of the current LLM-based honeypot. The SSH script handled incoming SSH connections, authentication handling, host key usage, and port binding. The main honeypot script supported LLM-generated command responses, correction handling, simulated filesystem behaviour, attack pattern handling, built-in command handling, and structured logging.
